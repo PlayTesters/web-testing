@@ -8,9 +8,14 @@ Feature: Add Candidate
     When I navigate to the Recruitment module
     And I click the Add button in Recruitment
     And I fill in the candidate details:
-      | Field       | Value                |
-      | First Name  | Kamal               |
-      | Last Name   | Duminda             |
-      | Email       | kam.doe@example.com |
+      | Field          | Value                |
+      | First Name     | Sugath                |
+      | Middle Name     | Hasi                |
+      | Last Name      | Sugatha              |
+      | Email          | suga.doe@example.com  |
+
+    And I select a vacancy by index 2
     And I click Save in Add Candidate
-#    Then I should see a confirmation message "Successfully Saved"
+    Then I navigate to the Candidates table
+
+
