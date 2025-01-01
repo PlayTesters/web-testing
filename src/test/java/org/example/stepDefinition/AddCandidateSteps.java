@@ -67,17 +67,57 @@ public class AddCandidateSteps {
     public void i_click_save_in_add_candidate() throws InterruptedException {
         addCandidatePage.clickSaveButton();
         Thread.sleep(3000); // Adding delay after clicking "Save"
-        page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("screenshots/after_clicking_save_button.png")));
+
     }
 
-    @Then("I navigate to the Candidates table")
-    public void i_navigate_to_the_candidates_table() throws InterruptedException {
-        recruitmentPage.clickCandidatesTab();
-        Thread.sleep(3000); // Adding delay before closing the browser
-        page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("screenshots/after_navigating_to_candidates_table.png")));
+    @And("I shortlist the candidate")
+    public void i_shortlist_the_candidate() throws InterruptedException {
+        // Invoke the method from the page object
+        addCandidatePage.clickShortlistButton();
+        Thread.sleep(2000); // Adding delay for navigation to the next page
+    }
+
+    @And("I fill in the notes {string} and save")
+    public void i_fill_in_the_notes_and_save(String notes) throws InterruptedException {
+        // Invoke the method from the page object
+        addCandidatePage.fillNotesAndSave(notes);
+        Thread.sleep(2000); // Adding delay after saving
+    }
+
+    @And("I delete a candidate")
+    public void i_delete_a_candidate() throws InterruptedException {
+        recruitmentPage.deleteAnyRecord();
+        Thread.sleep(3000); // Adding delay to ensure deletion is complete
         browser.close();
         playwright.close();
     }
+
+    @Then("I should see the email error message {string}")
+    public void i_should_see_the_email_error_message(String expectedMessage) {
+        // Call the new method to get the error message under the email field
+        String actualMessage = addCandidatePage.getEmailErrorMessage();
+        // Assert that the actual error message matches the expected one
+        assertEquals(expectedMessage, actualMessage, "The email error message is not as expected.");
+    }
+
+
+//    @When("I fill the email field with {string}")
+//    public void i_fill_the_email_field_with(String email) {
+//        addCandidatePage.fillCandidateEmail(email);
+//    }
+//
+//    @Then("I should see the expected email format message")
+//    public void i_should_see_the_expected_email_format_message() {
+//        boolean isExpectedFormatMessageVisible = addCandidatePage.isEmailExpectedFormatMessageVisible();
+//        assertTrue(isExpectedFormatMessageVisible, "The expected email format message is not visible.");
+//        browser.close();
+//        playwright.close();
+//    }
+
+
 }
+
+
+
+
+

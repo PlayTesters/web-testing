@@ -1,6 +1,7 @@
 package org.example.pages;
 
 import com.microsoft.playwright.*;
+import com.microsoft.playwright.options.AriaRole;
 
 import java.nio.file.Paths;
 
@@ -41,12 +42,43 @@ public class RecruitmentPage {
                 .setPath(Paths.get("screenshots/after_click_candidates_tab.png")));
     }
 
-    public boolean isCandidatePresentInTable(String candidateName) {
-        // Take a screenshot of the candidate table for validation
-        page.screenshot(new Page.ScreenshotOptions()
-                .setPath(Paths.get("screenshots/candidate_table.png")));
 
-        // Check if the candidate is present in the table
-        return page.locator("table").textContent().contains(candidateName);
+    public void deleteAnyRecord() {
+        // Wait for the table body to load
+        Locator tableBody = page.locator("div.oxd-table-body");
+        tableBody.waitFor(new Locator.WaitForOptions().setTimeout(10000));
+
+        // Locate the first row's delete button
+        Locator deleteButton = tableBody.locator("button.oxd-icon-button:has(i.bi-trash)").first();
+
+        // Check if any delete button exists
+        if (deleteButton.count() == 0) {
+            throw new RuntimeException("No records found with a delete button!");
+        }
+
+        // Click the delete button
+        deleteButton.click();
+
+        // Add a delay to allow time for the dialog to appear
+        try {
+            Thread.sleep(2000); // Delay for 2 seconds (you can adjust the time as needed)
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();  // Handle interruption
+        }
+
+        // Wait for the dialog container to become visible
+        Locator dialogContainer = page.locator("div.oxd-sheet.oxd-sheet--rounded.oxd-sheet--white.oxd-dialog-sheet.oxd-dialog-sheet--shadow.oxd-dialog-sheet--gutters.orangehrm-dialog-popup");
+        dialogContainer.waitFor(new Locator.WaitForOptions().setTimeout(10000));
+
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshots/before_record_deletion.png")));
+
+        // Locate and click the "Yes, Delete" button
+        Locator yesDeleteButton = page.locator("button:has-text('Yes, Delete')");
+        yesDeleteButton.waitFor(new Locator.WaitForOptions().setTimeout(10000));  // Wait until it's clickable
+        yesDeleteButton.click();
+
+        // Optionally, take a screenshot for verification
+        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshots/after_any_record_deletion.png")));
     }
+
 }
