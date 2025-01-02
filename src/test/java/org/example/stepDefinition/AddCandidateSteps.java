@@ -101,20 +101,6 @@ public class AddCandidateSteps {
     }
 
 
-//    @When("I fill the email field with {string}")
-//    public void i_fill_the_email_field_with(String email) {
-//        addCandidatePage.fillCandidateEmail(email);
-//    }
-//
-//    @Then("I should see the expected email format message")
-//    public void i_should_see_the_expected_email_format_message() {
-//        boolean isExpectedFormatMessageVisible = addCandidatePage.isEmailExpectedFormatMessageVisible();
-//        assertTrue(isExpectedFormatMessageVisible, "The expected email format message is not visible.");
-//        browser.close();
-//        playwright.close();
-//    }
-
-
 }
 
 
