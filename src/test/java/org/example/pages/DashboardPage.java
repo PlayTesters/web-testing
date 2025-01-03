@@ -13,4 +13,9 @@ public class DashboardPage {
         page.click("a[href='/web/index.php/recruitment/viewRecruitmentModule']");
         page.waitForSelector("h6:has-text('Recruitment')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
+
+        public void navigateToAdminModule() {
+        page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
+        page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(60000));
+    }
 }
