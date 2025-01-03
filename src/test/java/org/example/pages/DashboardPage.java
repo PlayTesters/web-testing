@@ -15,6 +15,7 @@ public class DashboardPage {
     }
 
 
+    //Navigate to admin
     public void navigateToAdminModule() {
         page.click("a[href='/web/index.php/admin/viewAdminModule']");
         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
