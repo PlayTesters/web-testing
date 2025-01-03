@@ -14,6 +14,11 @@ public class DashboardPage {
         page.waitForSelector("h6:has-text('Recruitment')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
 
+    public void navigateToPIMModule() {
+        page.click("a[href='/web/index.php/pim/viewPimModule']");
+        page.waitForSelector("h6:has-text('PIM')", new Page.WaitForSelectorOptions().setTimeout(10000));
+    }
+
 
     //Navigate to admin
     public void navigateToAdminModule() {
