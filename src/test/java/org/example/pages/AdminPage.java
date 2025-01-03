@@ -9,7 +9,8 @@ public class AdminPage {
         this.page = page;
     }
 
-    // Click on the Qualifications tab
+
+    // Click on the Qualifications tab...
     public void clickQualificationsTab() {
         page.locator("li.oxd-topbar-body-nav-tab:has-text('Qualifications')").click();
     }
