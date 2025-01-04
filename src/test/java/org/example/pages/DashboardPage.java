@@ -18,4 +18,13 @@ public class DashboardPage {
         page.click("a[href='/web/index.php/pim/viewPimModule']");
         page.waitForSelector("h6:has-text('PIM')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
+
+
+    //Navigate to admin
+    public void navigateToAdminModule() {
+        page.click("a[href='/web/index.php/admin/viewAdminModule']");
+        page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
+    }
+
+
 }
