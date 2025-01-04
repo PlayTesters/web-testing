@@ -10,6 +10,19 @@ public class AdminPage {
     }
 
 
+
+
+    public void clickJobMenu() {
+        page.click("span.oxd-topbar-body-nav-tab-item:has-text('Job')");
+        page.waitForSelector("ul.oxd-dropdown-menu", new Page.WaitForSelectorOptions().setTimeout(5000));
+    }
+
+    public void clickJobTitlesOption() {
+        page.click("ul.oxd-dropdown-menu a.oxd-topbar-body-nav-tab-link:has-text('Job Titles')");
+        page.waitForSelector("h6:has-text('Job Titles')", new Page.WaitForSelectorOptions().setTimeout(10000));
+    }
+
+
     // Click on the Qualifications tab...
     public void clickQualificationsTab() {
         page.locator("li.oxd-topbar-body-nav-tab:has-text('Qualifications')").click();
@@ -31,6 +44,7 @@ public class AdminPage {
     public boolean isEducationPageVisible() {
         return page.isVisible("h6:has-text('Education')");
     }
+
 
 
 }

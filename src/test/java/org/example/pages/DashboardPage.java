@@ -14,6 +14,14 @@ public class DashboardPage {
         page.waitForSelector("h6:has-text('Recruitment')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
 
+
+ 
+
+//    public void navigateToPerformanceModule() {
+//        page.click("a[href='/web/index.php/performance/searchEvaluatePerformanceReview']");
+//        page.waitForSelector("//span[text()='Performance']", new Page.WaitForSelectorOptions().setTimeout(10000));
+//    }
+
     public void navigateToPIMModule() {
         page.click("a[href='/web/index.php/pim/viewPimModule']");
         page.waitForSelector("h6:has-text('PIM')", new Page.WaitForSelectorOptions().setTimeout(10000));
@@ -25,6 +33,7 @@ public class DashboardPage {
         page.click("a[href='/web/index.php/admin/viewAdminModule']");
         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
+
 
 
 }
