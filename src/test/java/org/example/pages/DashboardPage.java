@@ -15,6 +15,14 @@ public class DashboardPage {
     }
 
 
+    public void navigateToAdminModule() {
+        // Directly navigate to the Nationalities page under Admin module
+        page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/admin/nationality");
+        // Wait for the Nationalities page to load by checking for an element that's visible on that page
+        page.waitForSelector("h6:has-text('Nationalities')", new Page.WaitForSelectorOptions().setTimeout(30000)); // 30 seconds timeout
+    }
+
+
 //         public void navigateToAdminModule() {
 //         page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
 //         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(60000));
@@ -35,10 +43,11 @@ public class DashboardPage {
 
 
     //Navigate to admin
-    public void navigateToAdminModule() {
-        page.click("a[href='/web/index.php/admin/viewAdminModule']");
-        page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
-    }
+//     public void navigateToAdminModule() {
+//         page.click("a[href='/web/index.php/admin/viewAdminModule']");
+//         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
+//     }
+
 
 
 
