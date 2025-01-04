@@ -15,6 +15,12 @@ public class DashboardPage {
     }
 
 
+//         public void navigateToAdminModule() {
+//         page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
+//         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(60000));
+//     }
+
+
  
 
 //    public void navigateToPerformanceModule() {
@@ -33,6 +39,7 @@ public class DashboardPage {
         page.click("a[href='/web/index.php/admin/viewAdminModule']");
         page.waitForSelector("h6:has-text('Admin')", new Page.WaitForSelectorOptions().setTimeout(10000));
     }
+
 
 
 
